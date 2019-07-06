@@ -185,6 +185,14 @@ class CommandThread (threading.Thread):
         self.logger.debug(r)
         self.logger.debug(code)
 
+        for processId in r.splitlines():
+            c = 'ssh -o ConnectTimeout=10 %(address)s "sudo pkill -9 -P %(ppid)"'
+            r, code = run_command(
+                c % {'address': self.config['address']} % {'ppid': processId}
+            )
+            self.logger.debug(r)
+            self.logger.debug(code)
+
         # if code == 255:
         #     self.logger.info("unable to connect")
         #     return False
