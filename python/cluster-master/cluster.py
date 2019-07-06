@@ -179,7 +179,7 @@ class CommandThread (threading.Thread):
         # self.logger.debug(r)
         # self.logger.debug(code)
 
-        c = """ssh -o ConnectTimeout=10 %(address)s "ps aux | grep \'python3 scan.py\' | grep -v \'grep\\|vim\' | awk \'{print $2}\'" """
+        c = """ssh -o ConnectTimeout=10 %(address)s "ps aux | grep \'python3 scan.py\' | grep -v \'grep\\|vim\' | awk \'{print \$2}\'" """
         r, code = run_command(
              c % {'address': self.config['address']})
         self.logger.debug(r)
