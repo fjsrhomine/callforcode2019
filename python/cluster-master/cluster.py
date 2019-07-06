@@ -186,7 +186,7 @@ class CommandThread (threading.Thread):
         self.logger.debug(code)
 
         for processId in r.splitlines():
-            c = 'ssh -o ConnectTimeout=10 %(address)s "sudo pkill -9 -P %(ppid)"'
+            c = 'ssh -o ConnectTimeout=10 %(address)s "sudo pkill -9 -P %(ppid)s"'
             r, code = run_command(
                 c % {'address': self.config['address']} % {'ppid': processId}
             )
