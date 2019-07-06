@@ -394,11 +394,15 @@ def main(args, config):
     # Start new Threads
     for thread in threads:
         thread.start()
+        print("NewThread initialized")
     for thread in threads:
         try:
+            print("Thread preJoin")
             thread.join()
+            print("Thread AfterJoin")
         except:
             pass
+            print("Thread Pass")
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
