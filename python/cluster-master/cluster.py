@@ -173,12 +173,6 @@ class CommandThread (threading.Thread):
             return False, "%s is not scanning/hosting" % self.config['address']
 
     def kill_pi(self):
-        # c = 'ssh -o ConnectTimeout=10 %(address)s "sudo pkill -9 python3"'
-        # r, code = run_command(
-        #     c % {'address': self.config['address']})
-        # self.logger.debug(r)
-        # self.logger.debug(code)
-
         c = """ssh -o ConnectTimeout=10 %(address)s "ps aux | grep \'python3 scan.py\' | grep -v \'grep\\|vim\' | awk \'{print \$2}\'" """
         r, code = run_command(
              c % {'address': self.config['address']})
@@ -206,11 +200,11 @@ class CommandThread (threading.Thread):
             c % {'address': self.config['address']})
         self.logger.debug(r)
         self.logger.debug(code)
-        c = """ssh -o ConnectTimeout=10 %(address)s "sudo kill \`cat /run/hostapd.pid\`" """.strip()
-        r, code = run_command(
-            c % {'address': self.config['address']})
-        self.logger.debug(r)
-        self.logger.debug(code)
+        # c = """ssh -o ConnectTimeout=10 %(address)s "sudo kill \`cat /run/hostapd.pid\`" """.strip()
+        # r, code = run_command(
+        #     c % {'address': self.config['address']})
+        # self.logger.debug(r)
+        # self.logger.debug(code)
         time.sleep(2)
         stillRunning, foo2 = self.isRunning()
         if not stillRunning:
