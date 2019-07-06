@@ -188,29 +188,29 @@ class CommandThread (threading.Thread):
         for processId in r.splitlines():
             c = 'ssh -o ConnectTimeout=10 %(address)s "sudo pkill -9 -P %(ppid)s"'
             r, code = run_command(
-                c % {'address': self.config['address'], 'ppid': processId} 
+                c % {'address': self.config['address'], 'ppid': processId}
             )
             self.logger.debug(r)
             self.logger.debug(code)
 
-        # if code == 255:
-        #     self.logger.info("unable to connect")
-        #     return False
-        # c = 'ssh -o ConnectTimeout=10 %(address)s "sudo pkill -9 tshark"'
-        # r, code = run_command(
-        #     c % {'address': self.config['address']})
-        # self.logger.debug(r)
-        # self.logger.debug(code)
-        # c = 'ssh -o ConnectTimeout=10 %(address)s "sudo pkill -9 dumpcap"'
-        # r, code = run_command(
-        #     c % {'address': self.config['address']})
-        # self.logger.debug(r)
-        # self.logger.debug(code)
-        # c = """ssh -o ConnectTimeout=10 %(address)s "sudo kill \`cat /run/hostapd.pid\`" """.strip()
-        # r, code = run_command(
-        #     c % {'address': self.config['address']})
-        # self.logger.debug(r)
-        # self.logger.debug(code)
+        if code == 255:
+            self.logger.info("unable to connect")
+            return False
+        c = 'ssh -o ConnectTimeout=10 %(address)s "sudo pkill -9 tshark"'
+        r, code = run_command(
+            c % {'address': self.config['address']})
+        self.logger.debug(r)
+        self.logger.debug(code)
+        c = 'ssh -o ConnectTimeout=10 %(address)s "sudo pkill -9 dumpcap"'
+        r, code = run_command(
+            c % {'address': self.config['address']})
+        self.logger.debug(r)
+        self.logger.debug(code)
+        c = """ssh -o ConnectTimeout=10 %(address)s "sudo kill \`cat /run/hostapd.pid\`" """.strip()
+        r, code = run_command(
+            c % {'address': self.config['address']})
+        self.logger.debug(r)
+        self.logger.debug(code)
         time.sleep(2)
         stillRunning, foo2 = self.isRunning()
         if not stillRunning:
