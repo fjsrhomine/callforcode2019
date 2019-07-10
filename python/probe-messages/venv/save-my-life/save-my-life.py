@@ -22,6 +22,19 @@ from scapy.all import *
 # sendp(packet, iface="wlan0")
 # packet.show()
 
-target="www.target.com/30"
-ip=IP(dst=target)
-sendp(ip,iface="wlan0")
+
+# target="www.target.com/30"
+# ip=IP(dst=target)
+# sendp(ip,iface="wlan0")
+
+SSID = 'Test SSID'
+iface = "wlan0"
+sender="b8:27:eb:be:a8:12"
+
+dot11 = Dot11(type=0, subtype=4, addr1="ff:ff:ff:ff:ff:ff", addr2=sender, addr3=sender)
+probe =Dot11ProbeReq()
+essid=Dot11Elt(ID='SSID', info=SSID, len=len(SSID))
+
+frame =RadioTap()/dot11/probe/essid
+
+sendp(frame, iface=iface)
