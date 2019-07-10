@@ -19,5 +19,5 @@ packet = Dot11(
     cap=0x1100, listen_interval=0x00a) / Dot11Elt(
     ID=0, info="MY_BSSID")
 packet /= Dot11EltRates()
-sendp(packet, iface="wlp0s29u1u7")
+sendp(packet, iface="wlan0")
 packet.show()
