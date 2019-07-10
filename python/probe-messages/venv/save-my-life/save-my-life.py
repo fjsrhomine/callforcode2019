@@ -22,4 +22,6 @@ from scapy.all import *
 # sendp(packet, iface="wlan0")
 # packet.show()
 
-sendp((IP(dst="127.0.0.1",src="111.111.111.111")/UDP(dport=5005)/"Hello"),iface="wlan0")
+target="www.target.com/30"
+ip=IP(dst=target)
+sendp(ip,iface="wlan0")
