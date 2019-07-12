@@ -3,7 +3,7 @@ import binascii
 import time
 from scapy.all import *
 
-def customAction(packet):
+def analyzeSaveMyLife(packet):
     if packet.haslayer(Dot11ProbeReq):
         # packet.show()
         print("<Probe_found>")
