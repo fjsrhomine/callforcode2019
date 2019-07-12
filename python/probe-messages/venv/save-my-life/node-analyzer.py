@@ -18,5 +18,8 @@ print("!! Homine-Unnks presents: save-my-life  protocol example")
 # Getting the file name to work on
 filename = input('Enter the path/fileName to work on: ')
 
+# Getting the interface
+iface = input('Enter the wifi interface (wlan1 for example): ')
+
 # sniffing in real time the content of the file
-sniff(offline=filename, prn=analyzeSaveMyLife)
+sniff(iface=iface, prn=analyzeSaveMyLife)
