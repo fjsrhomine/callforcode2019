@@ -19,7 +19,9 @@ def analyzeSaveMyLife(packet):
 print("!! Homine-Unnks presents: save-my-life  protocol example")
 
 # Getting the interface
-iface = input('Enter the wifi interface (wlan1 for example): ')
+iface = input('Enter the wifi interface (wlan1 as default): ')
+if(iface ==""):
+    iface = "wlan1"
 
 # Getting the mac to filter
 filterThisMac = input('Enter a MAC for a device to monitor (optional): ')
