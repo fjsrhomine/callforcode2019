@@ -1,3 +1,6 @@
+import os
+print os.sys.path
+
 from scapy.all import *
 
 scapy_cap = rdpcap('/tmp/tshark-temp_00006_20190712031104')
