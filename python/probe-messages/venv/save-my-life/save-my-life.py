@@ -5,6 +5,7 @@ class SaveMyLife(Packet):
     fields_desc = [StrField("data", None)]
 
 
+SSID = 'Test SSID'
 iface = "wlan0"
 sender="b8:27:eb:be:a8:12"
 payload="Cosa extremadamanete grande para poder detectarla"
