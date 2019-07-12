@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="942d94fa-0ecf-40fa-8993-d2822be2de07" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/venv/save-my-life/node-analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/save-my-life/node-analyzer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/save-my-life/save-my-lifeV1.0.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/save-my-life/save-my-life.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/save-my-life/save-my-life.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,20 +14,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/venv/save-my-life/save-my-life.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="34" column="13" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="13" />
+            <state relative-caret-position="272">
+              <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/venv/save-my-life/node-analyzer.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
-              <caret line="11" column="56" lean-forward="true" selection-start-line="11" selection-start-column="56" selection-end-line="11" selection-end-column="56" />
+              <caret line="11" column="54" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="54" />
               <folding>
                 <element signature="e#1#16#0" expanded="true" />
               </folding>
@@ -49,9 +51,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/venv/safe-my-life/safe-my-life.py" />
-        <option value="$PROJECT_DIR$/venv/save-my-life/save-my-life.py" />
         <option value="$PROJECT_DIR$/venv/save-my-life/node-analyzerV1.0.py" />
         <option value="$PROJECT_DIR$/venv/save-my-life/node-analyzer.py" />
+        <option value="$PROJECT_DIR$/venv/save-my-life/save-my-life.py" />
       </list>
     </option>
   </component>
@@ -79,6 +81,12 @@
               <item name="probe-messages" type="b2602c69:ProjectViewProjectNode" />
               <item name="probe-messages" type="462c0819:PsiDirectoryNode" />
               <item name="venv" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="probe-messages" type="b2602c69:ProjectViewProjectNode" />
+              <item name="probe-messages" type="462c0819:PsiDirectoryNode" />
+              <item name="venv" type="462c0819:PsiDirectoryNode" />
+              <item name="save-my-life" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="probe-messages" type="b2602c69:ProjectViewProjectNode" />
@@ -197,13 +205,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/save-my-life/save-my-life.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="34" column="13" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/venv/save-my-life/node-analyzerV2.0.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -214,10 +215,20 @@
     <entry file="file://$PROJECT_DIR$/venv/save-my-life/node-analyzer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
-          <caret line="11" column="56" lean-forward="true" selection-start-line="11" selection-start-column="56" selection-end-line="11" selection-end-column="56" />
+          <caret line="11" column="54" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="54" />
           <folding>
             <element signature="e#1#16#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/save-my-life/save-my-lifeV1.0.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/save-my-life/save-my-life.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
         </state>
       </provider>
     </entry>
