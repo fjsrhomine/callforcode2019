@@ -1,5 +1,3 @@
-os.sys.path.append('/usr/local/lib/python2.7/site-packages')
-
 from scapy.all import *
 
 scapy_cap = rdpcap('/tmp/tshark-temp_00006_20190712031104')
