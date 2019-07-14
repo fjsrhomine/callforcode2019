@@ -107,7 +107,7 @@ def main():
 
 
     # sniffing in real time the content of the file
-    print("Starting Sniffing")
+    print("Starting Sniffing with interface " + args.iface)
     sniff(iface=args.iface, prn=analyzeSaveMyLife)
 
 # executing program
