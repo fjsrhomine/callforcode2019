@@ -1,30 +1,109 @@
-
 import binascii
 import time
+import logging
 from scapy.all import *
+import requests
+
+logger = logging.getLogger('node-analyzer.py')
+
+#Global variables
+API_BASE_PATH = "/save-my-life"
+FRAMES_ACTION = "/frames"
 
 def analyzeSaveMyLife(packet):
+    packet.show()
     if packet.haslayer(Dot11ProbeReq):
-        if( filterThisMac =="" or packet.addr2[:32] == filterThisMac):
+        if (args.macToFilter == "" or packet.addr2[:32] == args.macToFilter):
+            logger.info("packet found")
+
             # packet.show()
+
             print("<Probe_found>")
             print("\ttime = " + str(packet.time))  # time
             print("\tmac = " + packet.addr2[:32])  # mac
             print("\tSC = " + str(packet[Dot11].SC))  # SC - Sequence Control
             print("\tFullPacket")
-            packet.show()
             print("</Probe_found>")
+            # packet.show()
+
+            # preparing data to send to DB
+            payload = {
+                "time": str(packet.time),
+                "mac": packet.addr2[:32],
+                "SC": str(packet[Dot11].SC),
+                "antenna": args.antenna,
+                "nodeLocation": args.nodeLocation,
+            }
+
+            # Sending to seb Service
+            r = requests.post(args.server + API_BASE_PATH + FRAMES_ACTION, json=payload)
+
+            logger.info("Sent to server with status code: " + str(r.status_code))
 
 
-print("!! Homine-Unnks presents: save-my-life  protocol example")
+def main():
+    # Check if SUDO
+    # http://serverfault.com/questions/16767/check-admin-rights-inside-python-script
+    if os.getuid() != 0:
+        print("you must run sudo!")
+        return
 
-# Getting the interface
-iface = input('Enter the wifi interface (wlan1 as default): ')
-if(iface ==""):
-    iface = "wlan1"
+    print("!! Homine-Unks presents: save-my-life  protocol example")
 
-# Getting the mac to filter
-filterThisMac = input('Enter a MAC for a device to monitor (optional): ')
+    # Parse arguments
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "-i",
+        "--iface",
+        default="wlan1",
+        help="Wifi interface (wlan1 as default)")
+    parser.add_argument(
+        "-a",
+        "--antenna",
+        required=True,
+        help="Define a name for the anthenna this node belongs to")
+    parser.add_argument(
+        "-n",
+        "--nodeLocation",
+        required=True,
+        choices=['0', '120', '240'],
+        help="Define the location in degrees where this node is located in the antenna")
+    parser.add_argument(
+        "-mf",
+        "--macToFilter",
+        help="Defile a mac addres, all Probe frames logged will belong only to this mac")
+    parser.add_argument(
+        "-s",
+        "--server",
+        default="https://71326931.us-south.apiconnect.appdomain.cloud",
+        help="Define the server to perform Rest requests to save the Prove frames")
+    parser.add_argument(
+        "-d",
+        "--debug",
+        action="store_true",
+        help="Set this to show detailed debug logged")
+    args = parser.parse_args()
 
-# sniffing in real time the content of the file
-sniff(iface=iface, prn=analyzeSaveMyLife)
+    # Check arguments for logging
+    fh = logging.FileHandler('node-analyzer.py')
+    ch = logging.StreamHandler()
+
+    fh.setLevel(logging.INFO)
+    ch.setLevel(logging.INFO)
+    logger.setLevel(logging.INFO)
+    if args.debug:
+        fh.setLevel(logging.DEBUG)
+        ch.setLevel(logging.DEBUG)
+        logger.setLevel(logging.DEBUG)
+
+    formatter = logging.Formatter('%(asctime)s - %(funcName)s:%(lineno)d - %(levelname)s - %(message)s')
+    fh.setFormatter(formatter)
+    ch.setFormatter(formatter)
+    logger.addHandler(fh)
+    logger.addHandler(ch)
+
+    # sniffing in real time the content of the file
+    sniff(iface=args.iface, prn=analyzeSaveMyLife)
+
+# executing program
+main()
