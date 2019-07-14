@@ -12,15 +12,13 @@ API_BASE_PATH = "/save-my-life"
 FRAMES_ACTION = "/frames"
 
 def analyzeSaveMyLife(packet):
-    print("!")
     if (args != None):
-        print("*")
 
         #packet.show()
         if packet.haslayer(Dot11ProbeReq):
             if (args.macToFilter == "" or packet.addr2[:32] == args.macToFilter):
                 logger.info("packet found")
-
+                print("Packet Found")
                 # packet.show()
 
                 print("<Probe_found>")
@@ -41,6 +39,7 @@ def analyzeSaveMyLife(packet):
                 }
 
                 # Sending to seb Service
+                print("Posting data to "+ args.server + API_BASE_PATH + FRAMES_ACTION)
                 r = requests.post(args.server + API_BASE_PATH + FRAMES_ACTION, json=payload)
 
                 logger.info("Sent to server with status code: " + str(r.status_code))
