@@ -3,6 +3,7 @@ import time
 import logging
 import argparse
 import requests
+import json
 from scapy.all import *
 
 logger = logging.getLogger('node-analyzer.py')
@@ -39,7 +40,7 @@ def analyzeSaveMyLife(packet):
                 }
 
                 # Sending to seb Service
-                print("Posting data to "+ args.server + API_BASE_PATH + FRAMES_ACTION)
+                print("Posting data to "+ args.server + API_BASE_PATH + FRAMES_ACTION + ">>" + json.dumps(payload))
                 r = requests.post(args.server + API_BASE_PATH + FRAMES_ACTION, json=payload)
 
                 logger.info("Sent to server with status code: " + str(r.status_code))
