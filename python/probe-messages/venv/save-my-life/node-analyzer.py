@@ -10,46 +10,50 @@ logger = logging.getLogger('node-analyzer.py')
 #Global variables
 API_BASE_PATH = "/save-my-life"
 FRAMES_ACTION = "/frames"
+args = None
 
 def analyzeSaveMyLife(packet):
-    print("*")
+    if (setup_complete != None):
+        print("*")
 
-    #packet.show()
-    if packet.haslayer(Dot11ProbeReq):
-        if (args.macToFilter == "" or packet.addr2[:32] == args.macToFilter):
-            logger.info("packet found")
+        #packet.show()
+        if packet.haslayer(Dot11ProbeReq):
+            if (args.macToFilter == "" or packet.addr2[:32] == args.macToFilter):
+                logger.info("packet found")
 
-            # packet.show()
+                # packet.show()
 
-            print("<Probe_found>")
-            print("\ttime = " + str(packet.time))  # time
-            print("\tmac = " + packet.addr2[:32])  # mac
-            print("\tSC = " + str(packet[Dot11].SC))  # SC - Sequence Control
-            print("\tFullPacket")
-            print("</Probe_found>")
-            # packet.show()
+                print("<Probe_found>")
+                print("\ttime = " + str(packet.time))  # time
+                print("\tmac = " + packet.addr2[:32])  # mac
+                print("\tSC = " + str(packet[Dot11].SC))  # SC - Sequence Control
+                print("\tFullPacket")
+                print("</Probe_found>")
+                # packet.show()
 
-            # preparing data to send to DB
-            payload = {
-                "time": str(packet.time),
-                "mac": packet.addr2[:32],
-                "SC": str(packet[Dot11].SC),
-                "antenna": args.antenna,
-                "nodeLocation": args.nodeLocation,
-            }
+                # preparing data to send to DB
+                payload = {
+                    "time": str(packet.time),
+                    "mac": packet.addr2[:32],
+                    "SC": str(packet[Dot11].SC),
+                    "antenna": args.antenna,
+                    "nodeLocation": args.nodeLocation,
+                }
 
-            # Sending to seb Service
-            r = requests.post(args.server + API_BASE_PATH + FRAMES_ACTION, json=payload)
+                # Sending to seb Service
+                r = requests.post(args.server + API_BASE_PATH + FRAMES_ACTION, json=payload)
 
-            logger.info("Sent to server with status code: " + str(r.status_code))
-
+                logger.info("Sent to server with status code: " + str(r.status_code))
+    else:
+        logger.error("args is null inside analyzeSaveMyLife method")
 
 def setup():
+    args = None
     # Check if SUDO
     # http://serverfault.com/questions/16767/check-admin-rights-inside-python-script
     if os.getuid() != 0:
         print("you must run sudo!")
-        return
+        return None
 
     print("!! Homine-Unks presents: save-my-life  protocol example")
 
@@ -105,14 +109,14 @@ def setup():
     logger.addHandler(fh)
     logger.addHandler(ch)
 
-    return True
+    return args
 
 
 
 # executing program
-setup_complete = setup()
+args = setup()
 
-if(setup_complete):
+if(setup_complete != None):
     # sniffing in real time the content of the file
     print("Starting Sniffing with interface " + args.iface)
     sniff(iface=args.iface, prn=analyzeSaveMyLife)
