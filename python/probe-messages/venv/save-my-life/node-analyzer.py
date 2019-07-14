@@ -41,9 +41,10 @@ def analyzeSaveMyLife(packet):
 
                 # Sending to seb Service
                 print("Posting data to "+ args.server + API_BASE_PATH + FRAMES_ACTION + ">>" + json.dumps(payload))
-                r = requests.post(args.server + API_BASE_PATH + FRAMES_ACTION, json=payload)
+                rserverResponse = requests.post(args.server + API_BASE_PATH + FRAMES_ACTION, json=payload)
 
-                logger.info("Sent to server with status code: " + str(r.status_code))
+                logger.info("Sent to server with status code: " + str(rserverResponse.status_code))
+                logger.info("Response from server: " + json.dumps(rserverResponse))
     else:
         logger.error("args is null inside analyzeSaveMyLife method")
 
