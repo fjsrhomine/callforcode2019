@@ -13,7 +13,8 @@ FRAMES_ACTION = "/frames"
 args = None
 
 def analyzeSaveMyLife(packet):
-    if (setup_complete != None):
+    print("!")
+    if (args != None):
         print("*")
 
         #packet.show()
