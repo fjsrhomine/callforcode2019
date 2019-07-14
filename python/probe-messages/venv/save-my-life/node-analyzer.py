@@ -3,7 +3,7 @@ import time
 import logging
 import argparse
 from scapy.all import *
-import requests
+import requests 
 
 logger = logging.getLogger('node-analyzer.py')
 
