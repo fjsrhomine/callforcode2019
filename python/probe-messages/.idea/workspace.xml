@@ -25,7 +25,7 @@
         <entry file="file://$PROJECT_DIR$/venv/save-my-life/node-analyzer.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
-              <caret line="5" column="16" lean-forward="true" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
               <folding>
                 <element signature="e#1#16#0" expanded="true" />
               </folding>
@@ -253,7 +253,7 @@
     <entry file="file://$PROJECT_DIR$/venv/save-my-life/node-analyzer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="5" column="16" lean-forward="true" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
           <folding>
             <element signature="e#1#16#0" expanded="true" />
           </folding>
