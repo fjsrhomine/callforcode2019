@@ -116,7 +116,7 @@ def setup():
 # executing program
 args = setup()
 
-if(setup_complete != None):
+if(args != None):
     # sniffing in real time the content of the file
     print("Starting Sniffing with interface " + args.iface)
     sniff(iface=args.iface, prn=analyzeSaveMyLife)
