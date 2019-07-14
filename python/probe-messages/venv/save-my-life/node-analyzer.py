@@ -1,7 +1,7 @@
 import binascii
 import time
 import logging
-import argparse 
+import argparse
 from scapy.all import *
 import requests
 
@@ -86,7 +86,7 @@ def main():
     args = parser.parse_args()
 
     # Check arguments for logging
-    fh = logging.FileHandler('node-analyzer.py')
+    fh = logging.FileHandler('node-analyzer.log')
     ch = logging.StreamHandler()
 
     fh.setLevel(logging.INFO)
