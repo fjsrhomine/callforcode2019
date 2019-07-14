@@ -2,8 +2,8 @@ import binascii
 import time
 import logging
 import argparse
+import requests
 from scapy.all import *
-import requests  
 
 logger = logging.getLogger('node-analyzer.py')
 
