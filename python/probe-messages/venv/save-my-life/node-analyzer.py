@@ -12,7 +12,9 @@ API_BASE_PATH = "/save-my-life"
 FRAMES_ACTION = "/frames"
 
 def analyzeSaveMyLife(packet):
-    packet.show()
+    print("*")
+
+    #packet.show()
     if packet.haslayer(Dot11ProbeReq):
         if (args.macToFilter == "" or packet.addr2[:32] == args.macToFilter):
             logger.info("packet found")
@@ -103,7 +105,9 @@ def main():
     logger.addHandler(fh)
     logger.addHandler(ch)
 
+
     # sniffing in real time the content of the file
+    print("Starting Sniffing")
     sniff(iface=args.iface, prn=analyzeSaveMyLife)
 
 # executing program
