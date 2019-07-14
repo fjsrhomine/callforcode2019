@@ -10,7 +10,6 @@ logger = logging.getLogger('node-analyzer.py')
 #Global variables
 API_BASE_PATH = "/save-my-life"
 FRAMES_ACTION = "/frames"
-args = None
 
 def analyzeSaveMyLife(packet):
     print("!")
@@ -111,7 +110,6 @@ def setup():
     logger.addHandler(ch)
 
     return args
-
 
 
 # executing program
