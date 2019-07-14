@@ -44,7 +44,7 @@ def analyzeSaveMyLife(packet):
             logger.info("Sent to server with status code: " + str(r.status_code))
 
 
-def main():
+def setup():
     # Check if SUDO
     # http://serverfault.com/questions/16767/check-admin-rights-inside-python-script
     if os.getuid() != 0:
@@ -105,10 +105,16 @@ def main():
     logger.addHandler(fh)
     logger.addHandler(ch)
 
+    return True
 
+
+
+# executing program
+setup_complete = setup()
+
+if(setup_complete):
     # sniffing in real time the content of the file
     print("Starting Sniffing with interface " + args.iface)
     sniff(iface=args.iface, prn=analyzeSaveMyLife)
-
-# executing program
-main()
+else:
+    print("Node could not initiate, use --help for more information")
