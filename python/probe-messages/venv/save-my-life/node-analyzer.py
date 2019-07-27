@@ -26,8 +26,7 @@ def analyzeSaveMyLife(packet):
                 print("\ttime = " + str(packet.time))  # time
                 print("\tmac = " + packet.addr2[:32])  # mac
                 print("\tSC = " + str(packet[Dot11].SC))  # SC - Sequence Control
-                #print("\tNotDecoded = " + packet.notdecoded)  # Signal Strength
-                #print("\tSignal Strength = " + -(256-ord(packet.notdecoded[-3:-2])))  # Signal Strength
+                print("\tSignal Strength = " + packet.dBm_AntSignal)  # Signal Strength
                 print("\tFullPacket")
                 print("</Probe_found>")
                 packet.show()
