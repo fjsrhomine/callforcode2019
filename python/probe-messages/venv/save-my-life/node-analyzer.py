@@ -26,10 +26,10 @@ def analyzeSaveMyLife(packet):
                 print("\ttime = " + str(packet.time))  # time
                 print("\tmac = " + packet.addr2[:32])  # mac
                 print("\tSC = " + str(packet[Dot11].SC))  # SC - Sequence Control
-                print("\tSignal Strength = " + str(packet.dBm_AntSignal))  # Signal Strength
+                print("\tsignalStrength = " + str(packet.dBm_AntSignal))  # Signal Strength
                 print("\tFullPacket")
                 print("</Probe_found>")
-                packet.show()
+                #packet.show()
 
                 # preparing data to send to DB
                 payload = {
@@ -38,6 +38,7 @@ def analyzeSaveMyLife(packet):
                     "SC": str(packet[Dot11].SC),
                     "antenna": args.antenna,
                     "nodeLocation": args.nodeLocation,
+                    "signalStrength": str(packet.dBm_AntSignal)
                 }
 
                 # Sending to seb Service
